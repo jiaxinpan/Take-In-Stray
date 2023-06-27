@@ -1,0 +1,48 @@
+﻿@model IEnumerable<浪愛有家.Models.Member>
+
+@{
+    ViewBag.Title = "會員資訊";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    .card{
+        border-radius:90px;
+    }
+
+    .col-md-4 img {
+        border-radius: 50%;
+        width: 150px;
+        border: 3px solid #fff;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+    }
+    
+</style>
+
+<br />
+<h2 class="text-center">會員資訊</h2>
+<br />
+
+@foreach (var item in Model)
+{
+    <div class="card ml-auto mr-auto" style="max-width: 500px;">
+        <div class="row no-gutters"> 
+
+            <div class="col-md-4">
+                <img src="@Url.Action("ShowImage", new { id=item.Account })" width="150">
+            </div>
+
+            <div class="col-md-8">
+
+                <div class="card-body">
+                    <h3 class="card-title text-center">@Html.DisplayFor(modelItem => item.Name)</h3>
+                    <p class="card-text">@Html.DisplayNameFor(model => model.Phone)：@Html.DisplayFor(modelItem => item.Phone)</p>
+                    <p class="text-center">@Html.ActionLink("修改資訊", "User_Member_Edit", new { id = item.Account }, new { @class = "btn Btn-Res text-light", style = "font-size:20px" })</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+}

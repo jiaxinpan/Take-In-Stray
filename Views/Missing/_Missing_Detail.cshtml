@@ -1,0 +1,80 @@
+﻿@model 浪愛有家.Models.Missing
+
+@{
+    ViewBag.Title = "走失文詳細資料";
+}
+
+<style>
+
+    .card-title {
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .card-text {
+        font-weight: 600;
+    }
+
+</style>
+
+<div class="row no-gutters">
+    <div class="col-lg-7">
+        <img src="@Url.Action("ShowImage", new { id=Model.MissingID })" style="width: 400px;" />
+    </div>
+    <div class="col-lg-5">
+        <div class="card-body">
+
+            <h3 class="card-title">@Html.DisplayFor(model => model.PetName)</h3>
+
+            <p class="card-text">
+                <span>@Html.DisplayNameFor(model => model.AnimalKind)：</span>
+                <span class="ml-2">@Html.DisplayFor(model => model.AnimalKind)</span>
+            </p>
+            <p class="card-text">
+                <span>@Html.DisplayNameFor(model => model.AnimalVariety)：</span>
+                <span class="ml-2">@Html.DisplayFor(model => model.AnimalVariety)</span>
+            </p>
+            <p class="card-text">
+                <span>@Html.DisplayNameFor(model => model.AnimalSex)：</span>
+                <span class="ml-2">@Html.DisplayFor(model => model.AnimalSex)</span>
+            </p>
+            <p class="card-text">
+                <span>@Html.DisplayNameFor(model => model.Age)：</span>
+                <span class="ml-2">@Html.DisplayFor(model => model.Age)</span>
+            </p>
+            <p class="card-text">
+                <span>@Html.DisplayNameFor(model => model.BodyType)：</span>
+                <span class="ml-2">@Html.DisplayFor(model => model.BodyType)</span>
+            </p>
+            <p class="card-text">
+                <span>@Html.DisplayNameFor(model => model.Neutered)：</span>
+                <span class="ml-2">@Html.DisplayFor(model => model.Neutered)</span>
+            </p>
+            <p class="card-text">
+                <span>@Html.DisplayNameFor(model => model.LostDate)：</span>
+                <span class="ml-2">@Html.DisplayFor(model => model.LostDate)</span>
+            </p>
+            <div class="card-text">
+                <span>走失地：</span>
+                <span>@Html.DisplayFor(model => model.City.CityName) @Html.DisplayFor(model => model.Country.CountryName)</span>
+                <p class="ml-5">@Html.DisplayFor(model => model.Location)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p class="card-text">
+    <span>@Html.DisplayNameFor(model => model.PublicationDate)：</span>
+    <span class="ml-2">@Html.DisplayFor(model => model.PublicationDate)</span>
+</p>
+
+<hr />
+
+<div class="card-text">
+    <span>@Html.DisplayNameFor(model => model.Feature)：</span>
+    <p class="ml-5">@Html.DisplayFor(model => model.Feature)</p>
+</div>
+<div class="card-text">
+    <span>@Html.DisplayNameFor(model => model.Caption)：</span>
+    <p class="ml-5">@Html.DisplayFor(model => model.Caption)</p>
+</div>

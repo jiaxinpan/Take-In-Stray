@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 浪愛有家</title>
+    @RenderSection("css", false)
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/MyStyle.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+    <style>
+        .Manager-navbar {
+            background-color: #1C656B;
+        }
+
+        .Manager-navli .nav-item .nav-link {
+            color: white;
+        }
+
+        .dropdown-menu .dropdown-item {
+            background-color: #1C656B;
+        }
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light Manager-navbar sticky-top" style="font-weight:600;">
+        <div class="container-lg">
+
+            <a class="navbar-brand  ml-auto mr-auto" href="@Url.Action("Manager_Index", "Manager")">
+                <img src="~/photos/Logo/LOGO狗-白.png" style="width:50px;" />
+                <img src="~/photos/Logo/浪愛有家-白.png" style="height:50px;">
+            </a>
+
+            <button style="border: none;" class="navbar-toggler" data-toggle="collapse" data-target="#mainMenu" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <img src="~/photos/Logo/logo貓-白-2.png" style="width:30px;" />
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainMenu">
+                <ul class="navbar-nav ml-md-5 w-100 Manager-navli">
+
+                    @if (Session["admin"] != null)
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("愛心領養", "Adoption_Index", "Adoption", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item  ml-md-3">
+                            @Html.ActionLink("走失協尋", "Missing_Index", "Missing", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item  ml-md-3">
+                            @Html.ActionLink("動物救援", "Rescue_Index", "Rescue", null, new { @class = "nav-link" })
+                        </li>
+
+                        <li class="nav-item dropdown ml-md-auto">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                                管理刊登文章
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item">
+                                    @Html.ActionLink("管理送養文章", "Admin_Adoption_Index", "Adoption", null, new { @class = "nav-link" })
+                                </div>
+
+                                <div class="dropdown-item">
+                                    @Html.ActionLink("管理走失文章", "Admin_Missing_Index", "Missing", null, new { @class = "nav-link" })
+                                </div>
+                                <div class="dropdown-item">
+                                    @Html.ActionLink("管理救援文章", "Admin_Rescue_Index", "Rescue", null, new { @class = "nav-link" })
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item ml-md-3">
+                            @Html.ActionLink("管理會員資訊", "Admin_Member_Index", "Member", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="btn ml-md-4 btn Btn-Log">
+                            <span onclick="location.href='@Url.Action("Manager_Logout", "Manager")'">管理員登出</span>
+                        </li>
+                    }
+
+                    else
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("愛心領養", "Adoption_Index", "Adoption", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item ml-md-3">
+                            @Html.ActionLink("走失協尋", "Missing_Index", "Missing", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item ml-md-3">
+                            @Html.ActionLink("動物救援", "Rescue_Index", "Rescue", null, new { @class = "nav-link" })
+                        </li>                       
+                    }
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container body-content">
+
+        @RenderBody()
+        <hr />
+
+        <footer>
+            <p style="color: #CA6953;">
+                &copy; @DateTime.Now.Year -
+                <img src="~/photos/Logo/浪愛有家-紅.png" style="width:8%;" />
+            </p>
+        </footer>
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

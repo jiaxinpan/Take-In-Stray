@@ -1,0 +1,46 @@
+﻿@model 浪愛有家.Models.Member
+
+@{
+    ViewBag.Title = "登入會員";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">登入會員</h2>
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal was-validated">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-row">
+            <div class="ml-auto mr-4 mb-3">
+                @Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "form-control", @required = "required", style = "font-size:20px" } })
+                @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+            </div>
+            <div class="mr-auto ml-4 mb-3">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @required = "required", style = "font-size:20px" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 text-right">
+                <input id="Reset1" type="reset" value="清除" class="btn btn-secondary" style = "font-size:20px" />
+                <input type="submit" value="登入" class="btn Btn-Log ml-3" />
+                <span class="text-danger">@ViewBag.ErrMsg</span>
+            </div>
+        </div>
+
+    </div>
+}
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,107 @@
+﻿body {
+    font-family: Arial, 漢儀新蒂柚子體;
+    font-size: 22px;
+    background-color: #5696821b;
+}
+
+/*navbar部分*/
+.navbar {
+    background-color: #569682;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: rgb(232,201,124);
+    font-weight: 500;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #fff;
+}
+
+.dropdown-toggle {
+    color: white;
+}
+
+.dropdown-menu {
+    background-color: #569682;
+}
+
+.dropdown-item {
+    background-color: #569682;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+/*按鈕部分*/
+
+/*淡橘色*/
+.Btn-Reg {
+    background-color: #E4B27B;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+/*淡黃色*/
+.Btn-Log {
+    background-color: rgb(232,201,124);
+    font-size: 19px;
+    font-weight: 500;
+    color: white;
+}
+
+/*深綠色*/
+.Btn-Close {
+    background-color: #1C656B;
+    color: white;
+    font-size: 20px;
+}
+
+/*紅磚色*/
+.Btn-Ado {
+    background-color: #ca6953c9;
+    color: white;
+    font-size: 20px;
+}
+
+/*淡藍色*/
+.Btn-Mis {
+    background-color: #76abd0;
+    color: white;
+    font-size: 20px;
+}
+
+/*淡紫色*/
+.Btn-Res {
+    background-color: #6a5fa2b1;
+    color: white;
+    font-size: 20px;
+}
+
+/*背景部分*/
+
+/*深綠色*/
+.Bg-Green {
+    background-color: #1C656B;
+    color: white;
+}
+
+/*紅磚色*/
+.Bg-Ado {
+    background-color: #ca6953c9;
+    color: white;
+    font-size: 20px;
+}
+
+/*淡藍色*/
+.Bg-Mis {
+    background-color: #76abd0;
+    color: white;
+}
+
+/*淡紫色*/
+.Bg-Res {
+    background-color: #6a5fa2b1;
+    color: white;
+}
+

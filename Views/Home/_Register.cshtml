@@ -1,0 +1,84 @@
+﻿@model 浪愛有家.Models.Member
+
+@{
+    ViewBag.Title = "註冊會員";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal was-validated">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhotoFile, "請選擇圖像", htmlAttributes: new { @class = "control-label" })
+            <div class="col-md-10 ml-auto mr-auto">
+                <label>
+                    <input type="radio" name="image" value="1.png" required />
+                    <img src="@Url.Content("~/photos/Avatar/1.png")" style="cursor: pointer; width: 95px;" />
+                </label>
+                <label>
+                    <input type="radio" name="image" value="2.png" />
+                    <img src="@Url.Content("~/photos/Avatar/2.png")" style="cursor: pointer; width: 95px;" />
+                </label>
+                <label>
+                    <input type="radio" name="image" value="3.png" />
+                    <img src="@Url.Content("~/photos/Avatar/3.png")" style="cursor: pointer; width: 95px;" />
+                </label>
+                <label>
+                    <input type="radio" name="image" value="4.png" />
+                    <img src="@Url.Content("~/photos/Avatar/4.png")" style="cursor: pointer; width: 95px;" />
+                </label>
+                <label>
+                    <input type="radio" name="image" value="5.png" />
+                    <img src="@Url.Content("~/photos/Avatar/5.png")" style="cursor: pointer; width: 95px;" />
+                </label>
+            </div>
+            @Html.ValidationMessageFor(model => model.PhotoFile, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-row">
+            <div class="ml-auto mr-4 mb-3">
+                @Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "form-control is-invalid", placeholder = "請輸入6-10碼的大小寫英數混和", @required = "required", style = "font-size:20px" } })
+                @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+                <span class="text-danger">@ViewBag.ErrMsg</span>
+            </div>
+            <div class="mr-auto ml-4 mb-3">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入6-10碼的大小寫英數混和", @required = "required", style = "font-size:20px" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="ml-auto mr-4 mb-3">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入名字/暱稱", @required = "required", style = "font-size:20px" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="mr-auto ml-4 mb-3">
+                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入手機號碼", @required = "required", style = "font-size:20px" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 text-right">
+                <input id="Reset1" type="reset" value="清除" class="btn btn-secondary" style = "font-size:20px" />
+                <input type="submit" value="註冊" class="btn Btn-Reg ml-3" />
+            </div>
+        </div>
+
+    </div>
+
+}
+
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,60 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<浪愛有家.Models.Member>
+
+@{
+    ViewBag.Title = "查看會員資訊";
+    Layout = "~/Views/Shared/_Layout_Manager.cshtml";
+}
+
+<br />
+<h2 class="text-center font-weight-bold" style="color: #1C656B;">查看會員資訊</h2>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Account)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Phone)
+        </th>
+        <th>刪除會員</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Account)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.ActionLink("刪除會員", "Admin_Member_Delete", new { id = item.Account }, new { onclick = "return confirm('是否確定刪除此會員？')", @class = "btn btn-danger", style = "font-size:20px" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("Admin_Member_Index", new { page }))
+
+@section scripts{
+
+    <script>
+
+        //PagedList
+        $('.pagination-container >ul').addClass('justify-content-center');
+        $('.pagination-container >ul>li').removeClass().addClass('page-item');
+        $('.pagination-container >ul>li>a').addClass('page-link');
+
+    </script>
+}

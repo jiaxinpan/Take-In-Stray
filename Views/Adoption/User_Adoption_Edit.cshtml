@@ -1,0 +1,193 @@
+﻿@model 浪愛有家.Models.Adoption
+
+@{
+    ViewBag.Title = "修改送養文資訊";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<div>
+    <h2 class="text-center font-weight-bold" style="color: #ca6953c9;">修改文章編號：@Html.DisplayFor(model => model.AdoptionID) 之刊登資訊</h2>
+</div>
+
+<div class="text-right">
+    @Html.ActionLink("返回頁面", "User_Adoption_Index", null, new { @class = "btn btn-warning text-light", style = "font-size:20px" })
+</div>
+
+@using (Html.BeginForm("User_Adoption_Edit", "Adoption", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <form class="needs-validation" novalidate>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.AdoptionID)
+        @Html.HiddenFor(model => model.Account)
+        @Html.HiddenFor(model => model.PublicationDate)
+        @Html.HiddenFor(model => model.PhotoFile)
+        @Html.HiddenFor(model => model.ImageType)
+
+        <div class="form-row">
+            <div class="form-group ml-md-auto">
+                <p>原圖：</p>
+                <img src="@Url.Action("ShowImage", new { id=Model.AdoptionID })" width="300" />
+            </div>
+            <div class="form-group ml-md-5 mr-md-auto">
+                <p>重新上傳：</p>
+                <img id="preview" src="" width="300" />
+            </div>
+        </div>
+
+        <div class="form-group" style="display: flex; justify-content: center; align-items: center;">
+            @Html.LabelFor(model => model.PhotoFile, "請上傳動物相片", htmlAttributes: new { @class = "control-label" })
+            <input type="file" class="form-control-file ml-md-5" id="image" name="image" onchange="previewImage(this)">
+            @Html.ValidationMessageFor(model => model.PhotoFile, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-row">
+            <div class="form-group ml-md-auto">
+                @Html.LabelFor(model => model.PetName, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.PetName, new { htmlAttributes = new { @class = "form-control", style = "font-size:20px" } })
+                @Html.ValidationMessageFor(model => model.PetName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ml-md-5">
+                @Html.LabelFor(model => model.AnimalKind, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("AnimalKind", new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "狗", Value = "狗"},
+                    new SelectListItem { Text = "貓", Value = "貓"},
+                    new SelectListItem { Text = "鳥", Value = "鳥"},
+                    new SelectListItem { Text = "兔", Value = "兔"},
+                    new SelectListItem { Text = "鼠", Value = "鼠"},
+                    new SelectListItem { Text = "其牠", Value = "其牠"}
+
+                }, "------請選擇動物種類------", htmlAttributes: new { @class = "form-control", style = "font-size:20px" })
+                @Html.ValidationMessageFor(model => model.AnimalKind, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ml-md-5 mr-md-auto">
+                @Html.LabelFor(model => model.AnimalVariety, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.AnimalVariety, new { htmlAttributes = new { @class = "form-control", style = "font-size:20px" } })
+                @Html.ValidationMessageFor(model => model.AnimalVariety, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group ml-md-auto">
+                @Html.LabelFor(model => model.AnimalSex, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("AnimalSex", new List<SelectListItem>
+               {
+                    new SelectListItem { Text = "公", Value = "公"},
+                    new SelectListItem { Text = "母", Value = "母"},
+                    new SelectListItem { Text = "未知", Value = "未知"}
+
+               }, "------請選擇動物性別------", htmlAttributes: new { @class = "form-control", style = "font-size:20px" })
+                @Html.ValidationMessageFor(model => model.AnimalSex, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ml-md-5">
+                @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control", placeholder = "例：一個月大/8個多月/3歲", style = "font-size:20px" } })
+                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ml-md-5 mr-md-auto">
+                @Html.LabelFor(model => model.BodyType, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("BodyType", new List<SelectListItem>
+               {
+                    new SelectListItem { Text = "小型", Value = "小型"},
+                    new SelectListItem { Text = "中型", Value = "中型"},
+                    new SelectListItem { Text = "大型", Value = "大型"}
+
+               }, "------請選擇動物體型------", htmlAttributes: new { @class = "form-control", style = "font-size:20px" })
+                @Html.ValidationMessageFor(model => model.BodyType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group ml-md-auto">
+                @Html.LabelFor(model => model.Neutered, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("Neutered", new List<SelectListItem>
+               {
+                    new SelectListItem { Text = "未結紮", Value = "未結紮"},
+                    new SelectListItem { Text = "已結紮", Value = "已結紮"},
+                    new SelectListItem { Text = "未知", Value = "未知"}
+
+               }, "------請選擇動物是否結紮------", htmlAttributes: new { @class = "form-control", style = "font-size:20px" })
+                @Html.ValidationMessageFor(model => model.Neutered, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ml-md-5">
+                @Html.LabelFor(model => model.CityID, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("CityID", null, "------請選擇所在縣市------", htmlAttributes: new { @class = "form-control", @required = "required", @data_val_required = "請選擇動物所在縣市", @data_val = "true", style = "font-size:20px" })
+                @Html.ValidationMessageFor(model => model.CityID, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ml-md-5 mr-md-auto">
+                @Html.LabelFor(model => model.CountryID, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("CountryID", null, "------請選擇所在鄉鎮市區------", htmlAttributes: new { @class = "form-control", @required = "required", @data_val_required = "請選擇動物所在鄉鎮市區", @data_val = "true", style = "font-size:20px" })
+                @Html.ValidationMessageFor(model => model.CountryID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group ml-md-auto">
+                @Html.LabelFor(model => model.Feature, htmlAttributes: new { @class = "control-label" })
+                <textarea class="form-control" id="Feature" name="Feature" rows="5" style="height: 200px; width: 400px; font-size: 20px;" placeholder="例：性格、毛色、外型上等概述">@Model.Feature</textarea>
+                @Html.ValidationMessageFor(model => model.Feature, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ml-md-5 mr-md-auto">
+                @Html.LabelFor(model => model.Caption, htmlAttributes: new { @class = "control-label" })
+                <textarea class="form-control" id="Caption" name="Caption" rows="5" style="height: 200px; width: 400px; font-size: 20px;" placeholder="例：對動物進行更詳細的說明、送養原因、送養條件等">@Model.Caption</textarea>
+                @Html.ValidationMessageFor(model => model.Caption, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="text-right">
+                <input type="submit" value="完成修改" class="btn Btn-Ado" />
+            </div>
+        </div>
+
+    </form>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script>
+
+        @* 照片預覽功能 *@
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#preview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        @* 地址連動功能 *@
+        $(function () {
+            $('#CityID').change(function () {
+                var CityID = $(this).val();
+                if (CityID) {
+                    $.ajax({
+                        url: '@Url.Action("GetCountryList", "Adoption")',  // 使用絕對路徑
+                        type: 'GET',
+                        dataType: 'json',
+                        data: { CityID: CityID },
+                        success: function (data) {
+                            $('#CountryID').empty();
+                            $('#CountryID').append($('<option>').text('------請選擇所在鄉鎮市區------').attr('value', ''));
+                            $.each(data, function (i, item) {
+                                $('#CountryID').append($('<option>').text(item.Text).attr('value', item.Value));
+                            });
+                        }
+                    });
+                }
+                else {
+                    $('#CountryID').empty();
+                    $('#CountryID').append($('<option>').text('------請選擇所在鄉鎮市區------').attr('value', ''));
+                }
+            });
+        });
+</script>
+}

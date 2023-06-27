@@ -1,0 +1,122 @@
+﻿@model IEnumerable<浪愛有家.Models.Rescue>
+
+@{
+    ViewBag.Title = "動物救援";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    #title {
+        display: flex;
+        font-size: 40px;
+        font-weight: 600;
+        color: #6a5fa2b1;
+    }
+
+        #title:before, #title:after {
+            content: "";
+            flex: 1 1;
+            border-bottom: 2px solid cadetblue;
+            margin: auto;
+        }
+
+        #title:before {
+            margin-left: 200px;
+            margin-right: 50px;
+        }
+
+        #title:after {
+            margin-right: 200px;
+            margin-left: 50px;
+        }
+
+</style>
+
+<span id="title">
+    動物救援<img src="~/photos/Logo/logo貓-紫.png" style="width:40px;" />
+</span>
+<br />
+
+@using (Html.BeginForm("Rescue_Index", "Rescue", FormMethod.Get))
+{
+    <div class="form-row">
+        @Html.Label("CityName", "選擇縣市：", new { @class = "ml-5" })
+        @Html.DropDownList("cityName", (SelectList)ViewBag.CityList, "全部縣市", new { @class = "form-control", style = "font-size:20px" })
+        @Html.Label("AnimalKind", "選擇動物類型：", new { @class = "ml-5" })
+        @Html.DropDownList("animalKind", (SelectList)ViewBag.AnimalKindList, "全部動物類型", new { @class = "form-control", style = "font-size:20px" })
+        <button type="submit" class="btn Btn-Res ml-4 mr-5">篩選</button>
+    </div>
+}
+
+<br />
+
+<div class="row row-cols-1 row-cols-md-3">
+    @foreach (var item in Model)
+    {
+        <div class="col mb-3">
+            <div class="card h-100">
+
+                <img src="@Url.Action("ShowImage", new { id=item.RescueID })" class="card-img-top h-70" alt="Image">
+                
+                <div class="card-body">
+                    <h3 class="card-title text-center font-weight-bold">@item.AnimalVariety</h3>
+                    <p class="card-text text-center font-weight-bold">
+                        <span>所在地：</span>
+                        <span class="ml-2">@item.City.CityName @item.Country.CountryName</span>
+                    </p>
+                    <p class="card-text text-center">
+                        <span>發現日期：</span>
+                        <span class="ml-2">@Html.DisplayFor(modelItem => item.FindDate)</span>
+                    </p>
+                    <p class="card-text text-center">
+                        <span>刊登日期：</span>
+                        <span class="ml-2">@Html.DisplayFor(modelItem => item.PublicationDate)</span>
+                    </p>
+                    <div style="text-align: center;">
+                        <button type="button" id="@item.RescueID" class="btn Btn-Res" data-toggle="modal" data-target="#ShowDetailModal-@item.RescueID" onclick="getDetailData(event)">
+                            詳細資訊
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+
+@foreach (var item in Model)
+{
+    <div class="modal fade" id="ShowDetailModal-@item.RescueID">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+
+                <div class="modal-header justify-content-center Bg-Res">
+                    <h3 class="modal-title font-weight-bold">文章詳細資訊</h3>
+                </div>
+
+                <div class="modal-body">
+
+                </div>
+
+                <div class="modal-footer">
+                    <span class="mr-auto">有意願救援者請撥打電話給 <span class="font-weight-bold">@item.Member.Name：@item.Member.Phone</span></span>
+                    <button type="button" class="btn Btn-Res" data-dismiss="modal">關閉</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script>
+
+        function getDetailData(evt) {
+            var baseUrl = '@Url.Content("~/")';  // 獲取專案的根路徑
+            var detailUrl = baseUrl + "Rescue/_Rescue_Detail/" + evt.target.id;  // 拼接具體的路徑
+            $(evt.target.dataset.target + ' .modal-body').load(detailUrl);
+        }
+
+    </script>
+}

@@ -1,0 +1,695 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="浪愛有家Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adoption">
+          <Key>
+            <PropertyRef Name="AdoptionID" />
+          </Key>
+          <Property Name="AdoptionID" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="10" />
+          <Property Name="PetName" Type="nvarchar" MaxLength="10" />
+          <Property Name="AnimalKind" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="AnimalVariety" Type="nvarchar" MaxLength="10" />
+          <Property Name="AnimalSex" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="Age" Type="nvarchar" MaxLength="10" />
+          <Property Name="BodyType" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="Feature" Type="nvarchar" MaxLength="100" />
+          <Property Name="Neutered" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="CityID" Type="tinyint" Nullable="false" />
+          <Property Name="CountryID" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="PublicationDate" Type="date" Nullable="false" />
+          <Property Name="Caption" Type="nvarchar" MaxLength="500" />
+          <Property Name="PhotoFile" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ImageType" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CityID" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="Account" />
+          </Key>
+          <Property Name="Account" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Password" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Account" />
+          </Key>
+          <Property Name="Account" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Password" Type="varchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Phone" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="PhotoFile" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ImageType" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Missing">
+          <Key>
+            <PropertyRef Name="MissingID" />
+          </Key>
+          <Property Name="MissingID" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PetName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AnimalKind" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="AnimalVariety" Type="nvarchar" MaxLength="10" />
+          <Property Name="AnimalSex" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="Age" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="BodyType" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="Feature" Type="nvarchar" MaxLength="100" />
+          <Property Name="Neutered" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="CityID" Type="tinyint" Nullable="false" />
+          <Property Name="CountryID" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="LostDate" Type="date" Nullable="false" />
+          <Property Name="PublicationDate" Type="date" Nullable="false" />
+          <Property Name="Caption" Type="nvarchar" MaxLength="500" />
+          <Property Name="PhotoFile" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ImageType" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rescue">
+          <Key>
+            <PropertyRef Name="RescueID" />
+          </Key>
+          <Property Name="RescueID" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="AnimalKind" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="AnimalVariety" Type="nvarchar" MaxLength="10" />
+          <Property Name="BodyType" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="Feature" Type="nvarchar" MaxLength="100" />
+          <Property Name="CityID" Type="tinyint" Nullable="false" />
+          <Property Name="CountryID" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="FindDate" Type="date" Nullable="false" />
+          <Property Name="PublicationDate" Type="date" Nullable="false" />
+          <Property Name="Caption" Type="nvarchar" MaxLength="500" />
+          <Property Name="PhotoFile" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ImageType" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Adoption__Accoun__403A8C7D">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Adoption" Type="Self.Adoption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Adoption">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Adoption__CityID__412EB0B6">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Adoption" Type="Self.Adoption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Adoption">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Adoption__Countr__4222D4EF">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Adoption" Type="Self.Adoption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Adoption">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Country__CityID__3D5E1FD2">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Country">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Missing__Account__44FF419A">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Missing">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Missing__CityID__45F365D3">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Missing">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Missing__Country__46E78A0C">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Missing">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rescue__Account__49C3F6B7">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Rescue" Type="Self.Rescue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Rescue">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rescue__CityID__4AB81AF0">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Rescue" Type="Self.Rescue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Rescue">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rescue__CountryI__4BAC3F29">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Rescue" Type="Self.Rescue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Rescue">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="浪愛有家ModelStoreContainer">
+          <EntitySet Name="Adoption" EntityType="Self.Adoption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Missing" EntityType="Self.Missing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rescue" EntityType="Self.Rescue" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Adoption__Accoun__403A8C7D" Association="Self.FK__Adoption__Accoun__403A8C7D">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Adoption" EntitySet="Adoption" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Adoption__CityID__412EB0B6" Association="Self.FK__Adoption__CityID__412EB0B6">
+            <End Role="City" EntitySet="City" />
+            <End Role="Adoption" EntitySet="Adoption" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Adoption__Countr__4222D4EF" Association="Self.FK__Adoption__Countr__4222D4EF">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Adoption" EntitySet="Adoption" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Country__CityID__3D5E1FD2" Association="Self.FK__Country__CityID__3D5E1FD2">
+            <End Role="City" EntitySet="City" />
+            <End Role="Country" EntitySet="Country" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Missing__Account__44FF419A" Association="Self.FK__Missing__Account__44FF419A">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Missing" EntitySet="Missing" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Missing__CityID__45F365D3" Association="Self.FK__Missing__CityID__45F365D3">
+            <End Role="City" EntitySet="City" />
+            <End Role="Missing" EntitySet="Missing" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Missing__Country__46E78A0C" Association="Self.FK__Missing__Country__46E78A0C">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Missing" EntitySet="Missing" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rescue__Account__49C3F6B7" Association="Self.FK__Rescue__Account__49C3F6B7">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Rescue" EntitySet="Rescue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rescue__CityID__4AB81AF0" Association="Self.FK__Rescue__CityID__4AB81AF0">
+            <End Role="City" EntitySet="City" />
+            <End Role="Rescue" EntitySet="Rescue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rescue__CountryI__4BAC3F29" Association="Self.FK__Rescue__CountryI__4BAC3F29">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Rescue" EntitySet="Rescue" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="浪愛有家Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adoption">
+          <Key>
+            <PropertyRef Name="AdoptionID" />
+          </Key>
+          <Property Name="AdoptionID" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Account" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PetName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AnimalKind" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnimalVariety" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AnimalSex" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Age" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BodyType" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Feature" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Neutered" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CityID" Type="Byte" Nullable="false" />
+          <Property Name="CountryID" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PublicationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Caption" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoFile" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ImageType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__Adoption__Accoun__403A8C7D" FromRole="Adoption" ToRole="Member" />
+          <NavigationProperty Name="City" Relationship="Self.FK__Adoption__CityID__412EB0B6" FromRole="Adoption" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__Adoption__Countr__4222D4EF" FromRole="Adoption" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Adoption" Relationship="Self.FK__Adoption__CityID__412EB0B6" FromRole="City" ToRole="Adoption" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__Country__CityID__3D5E1FD2" FromRole="City" ToRole="Country" />
+          <NavigationProperty Name="Missing" Relationship="Self.FK__Missing__CityID__45F365D3" FromRole="City" ToRole="Missing" />
+          <NavigationProperty Name="Rescue" Relationship="Self.FK__Rescue__CityID__4AB81AF0" FromRole="City" ToRole="Rescue" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CountryName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CityID" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Adoption" Relationship="Self.FK__Adoption__Countr__4222D4EF" FromRole="Country" ToRole="Adoption" />
+          <NavigationProperty Name="City" Relationship="Self.FK__Country__CityID__3D5E1FD2" FromRole="Country" ToRole="City" />
+          <NavigationProperty Name="Missing" Relationship="Self.FK__Missing__Country__46E78A0C" FromRole="Country" ToRole="Missing" />
+          <NavigationProperty Name="Rescue" Relationship="Self.FK__Rescue__CountryI__4BAC3F29" FromRole="Country" ToRole="Rescue" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="Account" />
+          </Key>
+          <Property Name="Account" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Account" />
+          </Key>
+          <Property Name="Account" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PhotoFile" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ImageType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Adoption" Relationship="Self.FK__Adoption__Accoun__403A8C7D" FromRole="Member" ToRole="Adoption" />
+          <NavigationProperty Name="Missing" Relationship="Self.FK__Missing__Account__44FF419A" FromRole="Member" ToRole="Missing" />
+          <NavigationProperty Name="Rescue" Relationship="Self.FK__Rescue__Account__49C3F6B7" FromRole="Member" ToRole="Rescue" />
+        </EntityType>
+        <EntityType Name="Missing">
+          <Key>
+            <PropertyRef Name="MissingID" />
+          </Key>
+          <Property Name="MissingID" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Account" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PetName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnimalKind" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnimalVariety" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AnimalSex" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Age" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BodyType" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Feature" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Neutered" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CityID" Type="Byte" Nullable="false" />
+          <Property Name="CountryID" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LostDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PublicationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Caption" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoFile" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ImageType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Self.FK__Missing__CityID__45F365D3" FromRole="Missing" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__Missing__Country__46E78A0C" FromRole="Missing" ToRole="Country" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__Missing__Account__44FF419A" FromRole="Missing" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Rescue">
+          <Key>
+            <PropertyRef Name="RescueID" />
+          </Key>
+          <Property Name="RescueID" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Account" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AnimalKind" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnimalVariety" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BodyType" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Feature" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CityID" Type="Byte" Nullable="false" />
+          <Property Name="CountryID" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FindDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PublicationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Caption" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoFile" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ImageType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Self.FK__Rescue__CityID__4AB81AF0" FromRole="Rescue" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__Rescue__CountryI__4BAC3F29" FromRole="Rescue" ToRole="Country" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__Rescue__Account__49C3F6B7" FromRole="Rescue" ToRole="Member" />
+        </EntityType>
+        <Association Name="FK__Adoption__Accoun__403A8C7D">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Adoption" Type="Self.Adoption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Adoption">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Adoption__CityID__412EB0B6">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Adoption" Type="Self.Adoption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Adoption">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Adoption__Countr__4222D4EF">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Adoption" Type="Self.Adoption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Adoption">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Country__CityID__3D5E1FD2">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Country">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Missing__CityID__45F365D3">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Missing">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rescue__CityID__4AB81AF0">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Rescue" Type="Self.Rescue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Rescue">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Missing__Country__46E78A0C">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Missing">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rescue__CountryI__4BAC3F29">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Rescue" Type="Self.Rescue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Rescue">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Missing__Account__44FF419A">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Missing">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rescue__Account__49C3F6B7">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Rescue" Type="Self.Rescue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Rescue">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="浪愛有家Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adoption" EntityType="Self.Adoption" />
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="Manager" EntityType="Self.Manager" />
+          <EntitySet Name="Member" EntityType="Self.Member" />
+          <EntitySet Name="Missing" EntityType="Self.Missing" />
+          <EntitySet Name="Rescue" EntityType="Self.Rescue" />
+          <AssociationSet Name="FK__Adoption__Accoun__403A8C7D" Association="Self.FK__Adoption__Accoun__403A8C7D">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Adoption" EntitySet="Adoption" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Adoption__CityID__412EB0B6" Association="Self.FK__Adoption__CityID__412EB0B6">
+            <End Role="City" EntitySet="City" />
+            <End Role="Adoption" EntitySet="Adoption" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Adoption__Countr__4222D4EF" Association="Self.FK__Adoption__Countr__4222D4EF">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Adoption" EntitySet="Adoption" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Country__CityID__3D5E1FD2" Association="Self.FK__Country__CityID__3D5E1FD2">
+            <End Role="City" EntitySet="City" />
+            <End Role="Country" EntitySet="Country" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Missing__CityID__45F365D3" Association="Self.FK__Missing__CityID__45F365D3">
+            <End Role="City" EntitySet="City" />
+            <End Role="Missing" EntitySet="Missing" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rescue__CityID__4AB81AF0" Association="Self.FK__Rescue__CityID__4AB81AF0">
+            <End Role="City" EntitySet="City" />
+            <End Role="Rescue" EntitySet="Rescue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Missing__Country__46E78A0C" Association="Self.FK__Missing__Country__46E78A0C">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Missing" EntitySet="Missing" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rescue__CountryI__4BAC3F29" Association="Self.FK__Rescue__CountryI__4BAC3F29">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Rescue" EntitySet="Rescue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Missing__Account__44FF419A" Association="Self.FK__Missing__Account__44FF419A">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Missing" EntitySet="Missing" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rescue__Account__49C3F6B7" Association="Self.FK__Rescue__Account__49C3F6B7">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Rescue" EntitySet="Rescue" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="浪愛有家ModelStoreContainer" CdmEntityContainer="浪愛有家Entities">
+          <EntitySetMapping Name="Adoption">
+            <EntityTypeMapping TypeName="浪愛有家Model.Adoption">
+              <MappingFragment StoreEntitySet="Adoption">
+                <ScalarProperty Name="AdoptionID" ColumnName="AdoptionID" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="PetName" ColumnName="PetName" />
+                <ScalarProperty Name="AnimalKind" ColumnName="AnimalKind" />
+                <ScalarProperty Name="AnimalVariety" ColumnName="AnimalVariety" />
+                <ScalarProperty Name="AnimalSex" ColumnName="AnimalSex" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="BodyType" ColumnName="BodyType" />
+                <ScalarProperty Name="Feature" ColumnName="Feature" />
+                <ScalarProperty Name="Neutered" ColumnName="Neutered" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="PublicationDate" ColumnName="PublicationDate" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="PhotoFile" ColumnName="PhotoFile" />
+                <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="浪愛有家Model.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="浪愛有家Model.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manager">
+            <EntityTypeMapping TypeName="浪愛有家Model.Manager">
+              <MappingFragment StoreEntitySet="Manager">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Member">
+            <EntityTypeMapping TypeName="浪愛有家Model.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="PhotoFile" ColumnName="PhotoFile" />
+                <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Missing">
+            <EntityTypeMapping TypeName="浪愛有家Model.Missing">
+              <MappingFragment StoreEntitySet="Missing">
+                <ScalarProperty Name="MissingID" ColumnName="MissingID" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="PetName" ColumnName="PetName" />
+                <ScalarProperty Name="AnimalKind" ColumnName="AnimalKind" />
+                <ScalarProperty Name="AnimalVariety" ColumnName="AnimalVariety" />
+                <ScalarProperty Name="AnimalSex" ColumnName="AnimalSex" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="BodyType" ColumnName="BodyType" />
+                <ScalarProperty Name="Feature" ColumnName="Feature" />
+                <ScalarProperty Name="Neutered" ColumnName="Neutered" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="LostDate" ColumnName="LostDate" />
+                <ScalarProperty Name="PublicationDate" ColumnName="PublicationDate" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="PhotoFile" ColumnName="PhotoFile" />
+                <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rescue">
+            <EntityTypeMapping TypeName="浪愛有家Model.Rescue">
+              <MappingFragment StoreEntitySet="Rescue">
+                <ScalarProperty Name="RescueID" ColumnName="RescueID" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="AnimalKind" ColumnName="AnimalKind" />
+                <ScalarProperty Name="AnimalVariety" ColumnName="AnimalVariety" />
+                <ScalarProperty Name="BodyType" ColumnName="BodyType" />
+                <ScalarProperty Name="Feature" ColumnName="Feature" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="FindDate" ColumnName="FindDate" />
+                <ScalarProperty Name="PublicationDate" ColumnName="PublicationDate" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="PhotoFile" ColumnName="PhotoFile" />
+                <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
