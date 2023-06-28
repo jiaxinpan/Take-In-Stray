@@ -29,7 +29,7 @@ namespace 浪愛有家.Controllers
             string user = ((Member)Session["user"]).Account;
             //從資料庫中取得以登入會員發布的文章
             var adoption = db.Adoption.Where(a => a.Account == user).OrderByDescending(a => a.PublicationDate);
-
+            
             return View(adoption.ToList());
         }
 
