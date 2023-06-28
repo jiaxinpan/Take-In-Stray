@@ -31,7 +31,7 @@ namespace 浪愛有家.Models
 
         [DisplayName("縣市代碼")]
         public byte CityID { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Adoption> Adoption { get; set; }
         public virtual City City { get; set; }

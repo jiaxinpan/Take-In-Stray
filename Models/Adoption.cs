@@ -73,7 +73,7 @@ namespace 浪愛有家.Models
 
         [DisplayName("相片類型")]
         public string ImageType { get; set; }
-    
+
         public virtual Member Member { get; set; }
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }

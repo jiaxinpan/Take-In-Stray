@@ -13,10 +13,10 @@ namespace 浪愛有家.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class 浪愛有家Entities : DbContext
+    public partial class 浪愛有家Azure_Entities : DbContext
     {
-        public 浪愛有家Entities()
-            : base("name=浪愛有家Entities")
+        public 浪愛有家Azure_Entities()
+            : base("name=浪愛有家Azure_Entities")
         {
         }
     

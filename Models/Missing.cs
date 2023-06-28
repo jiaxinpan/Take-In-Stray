@@ -69,7 +69,7 @@ namespace 浪愛有家.Models
 
         [DisplayName("走失日期")]
         [Required(ErrorMessage = "請填寫寵物走失日期")]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]        
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public System.DateTime LostDate { get; set; }
 
         [DisplayName("刊登日期")]
@@ -85,7 +85,7 @@ namespace 浪愛有家.Models
 
         [DisplayName("相片類型")]
         public string ImageType { get; set; }
-    
+
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }
         public virtual Member Member { get; set; }

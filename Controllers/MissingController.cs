@@ -13,7 +13,8 @@ namespace 浪愛有家.Controllers
 {
     public class MissingController : Controller
     {
-        private 浪愛有家Entities db = new 浪愛有家Entities();
+        //private 浪愛有家Entities db = new 浪愛有家Entities();
+        private 浪愛有家Azure_Entities db = new 浪愛有家Azure_Entities();
 
 
         //////////////////////////To會員：User開頭//////////////////////////
@@ -24,7 +25,7 @@ namespace 浪愛有家.Controllers
         public ActionResult User_Missing_Index()
         {
             string user = ((Member)Session["user"]).Account;
-            var missing = db.Missing.Where(a => a.Account == user);
+            var missing = db.Missing.Where(a => a.Account == user).OrderByDescending(m => m.PublicationDate);
 
             return View(missing.ToList());
         }
@@ -162,6 +163,8 @@ namespace 浪愛有家.Controllers
                 missing = missing.Where(m => m.AnimalKind == animalKind);
             }
 
+            missing = missing.OrderByDescending(m => m.PublicationDate);
+
             ViewBag.CityList = new SelectList(db.City, "CityName", "CityName");
             ViewBag.AnimalKindList = new SelectList(db.Adoption.Select(m => m.AnimalKind).Distinct().OrderBy(m => m));
 
@@ -191,7 +194,8 @@ namespace 浪愛有家.Controllers
         [Admin_LoginCheck]
         public ActionResult Admin_Missing_Index()
         {
-            var missing = db.Missing.Include(m => m.City).Include(m => m.Country).Include(m => m.Member);
+            var missing = db.Missing.Include(m => m.City).Include(m => m.Country).Include(m => m.Member).OrderByDescending(m => m.PublicationDate);
+            
             return View(missing.ToList());
         }
 

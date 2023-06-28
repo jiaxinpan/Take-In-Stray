@@ -9,7 +9,8 @@ namespace 浪愛有家.Controllers
 {
     public class HomeController : Controller
     {
-        private 浪愛有家Entities db = new 浪愛有家Entities();
+        //private 浪愛有家Entities db = new 浪愛有家Entities();
+        private 浪愛有家Azure_Entities db = new 浪愛有家Azure_Entities();
 
         //網站主頁
         public ActionResult Index()

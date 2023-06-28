@@ -16,7 +16,10 @@ namespace 浪愛有家.Controllers
 {
     public class MemberController : Controller
     {
-        private 浪愛有家Entities db = new 浪愛有家Entities();
+        
+        //private 浪愛有家Entities db = new 浪愛有家Entities();
+        private 浪愛有家Azure_Entities db = new 浪愛有家Azure_Entities();
+
         int pageSize = 5;
 
 

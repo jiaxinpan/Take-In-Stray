@@ -13,7 +13,9 @@ namespace 浪愛有家.Controllers
 {
     public class ManagerController : Controller
     {
-        private 浪愛有家Entities db = new 浪愛有家Entities();
+        //private 浪愛有家Entities db = new 浪愛有家Entities();
+
+        private 浪愛有家Azure_Entities db = new 浪愛有家Azure_Entities();
 
         //管理員註冊
         public ActionResult Manager_Register()

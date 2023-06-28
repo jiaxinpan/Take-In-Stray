@@ -172,42 +172,42 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Adoption.cs">
-      <DependentUpon>浪愛有家Model.tt</DependentUpon>
+      <DependentUpon>浪愛有家Azure_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BR.cs" />
     <Compile Include="Models\City.cs">
-      <DependentUpon>浪愛有家Model.tt</DependentUpon>
+      <DependentUpon>浪愛有家Azure_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Country.cs">
-      <DependentUpon>浪愛有家Model.tt</DependentUpon>
+      <DependentUpon>浪愛有家Azure_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Manager.cs">
-      <DependentUpon>浪愛有家Model.tt</DependentUpon>
+      <DependentUpon>浪愛有家Azure_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Member.cs">
-      <DependentUpon>浪愛有家Model.tt</DependentUpon>
+      <DependentUpon>浪愛有家Azure_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Missing.cs">
-      <DependentUpon>浪愛有家Model.tt</DependentUpon>
+      <DependentUpon>浪愛有家Azure_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rescue.cs">
-      <DependentUpon>浪愛有家Model.tt</DependentUpon>
+      <DependentUpon>浪愛有家Azure_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\setData.cs" />
-    <Compile Include="Models\浪愛有家Model.Context.cs">
+    <Compile Include="Models\浪愛有家Azure_Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>浪愛有家Model.Context.tt</DependentUpon>
+      <DependentUpon>浪愛有家Azure_Model.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\浪愛有家Model.cs">
+    <Compile Include="Models\浪愛有家Azure_Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>浪愛有家Model.tt</DependentUpon>
+      <DependentUpon>浪愛有家Azure_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\浪愛有家Model.Designer.cs">
+    <Compile Include="Models\浪愛有家Azure_Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>浪愛有家Model.edmx</DependentUpon>
+      <DependentUpon>浪愛有家Azure_Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\VMLogin.cs" />
@@ -224,15 +224,15 @@
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Models\浪愛有家Model.Context.tt">
+    <Content Include="Models\浪愛有家Azure_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>浪愛有家Model.Context.cs</LastGenOutput>
-      <DependentUpon>浪愛有家Model.edmx</DependentUpon>
+      <LastGenOutput>浪愛有家Azure_Model.Context.cs</LastGenOutput>
+      <DependentUpon>浪愛有家Azure_Model.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\浪愛有家Model.tt">
+    <Content Include="Models\浪愛有家Azure_Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>浪愛有家Model.edmx</DependentUpon>
-      <LastGenOutput>浪愛有家Model.cs</LastGenOutput>
+      <DependentUpon>浪愛有家Azure_Model.edmx</DependentUpon>
+      <LastGenOutput>浪愛有家Azure_Model.cs</LastGenOutput>
     </Content>
     <Content Include="photos\Avatar\1.png" />
     <Content Include="photos\Avatar\2.png" />
@@ -289,13 +289,16 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <EntityDeploy Include="Models\浪愛有家Model.edmx">
+    <EntityDeploy Include="Models\浪愛有家Azure_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>浪愛有家Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>浪愛有家Azure_Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\浪愛有家Model.edmx.diagram">
-      <DependentUpon>浪愛有家Model.edmx</DependentUpon>
+    <Content Include="Models\浪愛有家Azure_Model.edmx.diagram">
+      <DependentUpon>浪愛有家Azure_Model.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\Take-In-Stray - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Take-In-Stray - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="122303b00e21454595b406e8553385d5" Name="Diagram1">
+        <EntityTypeShape EntityType="浪愛有家Azure_Model.Adoption" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="浪愛有家Azure_Model.City" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="浪愛有家Azure_Model.Country" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="浪愛有家Azure_Model.Manager" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="浪愛有家Azure_Model.Member" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="浪愛有家Azure_Model.Missing" Width="1.5" PointX="8.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="浪愛有家Azure_Model.Rescue" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="浪愛有家Azure_Model.FK__Adoption__Accoun__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="浪愛有家Azure_Model.FK__Adoption__CityID__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="浪愛有家Azure_Model.FK__Adoption__Countr__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="浪愛有家Azure_Model.FK__Country__CityID__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="浪愛有家Azure_Model.FK__Missing__CityID__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="浪愛有家Azure_Model.FK__Rescue__CityID__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="浪愛有家Azure_Model.FK__Missing__Country__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="浪愛有家Azure_Model.FK__Rescue__CountryI__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="浪愛有家Azure_Model.FK__Missing__Account__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="浪愛有家Azure_Model.FK__Rescue__Account__71D1E811" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

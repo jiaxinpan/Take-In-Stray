@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="浪愛有家Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="浪愛有家Azure_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adoption">
           <Key>
             <PropertyRef Name="AdoptionID" />
@@ -101,7 +101,7 @@
           <Property Name="PhotoFile" Type="varbinary(max)" Nullable="false" />
           <Property Name="ImageType" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Adoption__Accoun__403A8C7D">
+        <Association Name="FK__Adoption__Accoun__6B24EA82">
           <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
           <End Role="Adoption" Type="Self.Adoption" Multiplicity="*" />
           <ReferentialConstraint>
@@ -113,7 +113,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Adoption__CityID__412EB0B6">
+        <Association Name="FK__Adoption__CityID__6C190EBB">
           <End Role="City" Type="Self.City" Multiplicity="1" />
           <End Role="Adoption" Type="Self.Adoption" Multiplicity="*" />
           <ReferentialConstraint>
@@ -125,7 +125,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Adoption__Countr__4222D4EF">
+        <Association Name="FK__Adoption__Countr__6D0D32F4">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="Adoption" Type="Self.Adoption" Multiplicity="*" />
           <ReferentialConstraint>
@@ -137,7 +137,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Country__CityID__3D5E1FD2">
+        <Association Name="FK__Country__CityID__6E01572D">
           <End Role="City" Type="Self.City" Multiplicity="1" />
           <End Role="Country" Type="Self.Country" Multiplicity="*" />
           <ReferentialConstraint>
@@ -149,7 +149,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Missing__Account__44FF419A">
+        <Association Name="FK__Missing__Account__6EF57B66">
           <End Role="Member" Type="Self.Member" Multiplicity="1" />
           <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
           <ReferentialConstraint>
@@ -161,7 +161,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Missing__CityID__45F365D3">
+        <Association Name="FK__Missing__CityID__6FE99F9F">
           <End Role="City" Type="Self.City" Multiplicity="1" />
           <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
           <ReferentialConstraint>
@@ -173,7 +173,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Missing__Country__46E78A0C">
+        <Association Name="FK__Missing__Country__70DDC3D8">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
           <ReferentialConstraint>
@@ -185,7 +185,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Rescue__Account__49C3F6B7">
+        <Association Name="FK__Rescue__Account__71D1E811">
           <End Role="Member" Type="Self.Member" Multiplicity="1" />
           <End Role="Rescue" Type="Self.Rescue" Multiplicity="*" />
           <ReferentialConstraint>
@@ -197,7 +197,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Rescue__CityID__4AB81AF0">
+        <Association Name="FK__Rescue__CityID__72C60C4A">
           <End Role="City" Type="Self.City" Multiplicity="1" />
           <End Role="Rescue" Type="Self.Rescue" Multiplicity="*" />
           <ReferentialConstraint>
@@ -209,7 +209,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Rescue__CountryI__4BAC3F29">
+        <Association Name="FK__Rescue__CountryI__73BA3083">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="Rescue" Type="Self.Rescue" Multiplicity="*" />
           <ReferentialConstraint>
@@ -221,7 +221,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="浪愛有家ModelStoreContainer">
+        <Function Name="getAdoptionID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="char" />
+        <Function Name="getMissingID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="char" />
+        <Function Name="getRescueID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="char" />
+        <EntityContainer Name="浪愛有家Azure_ModelStoreContainer">
           <EntitySet Name="Adoption" EntityType="Self.Adoption" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
@@ -229,43 +232,43 @@
           <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Missing" EntityType="Self.Missing" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rescue" EntityType="Self.Rescue" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Adoption__Accoun__403A8C7D" Association="Self.FK__Adoption__Accoun__403A8C7D">
+          <AssociationSet Name="FK__Adoption__Accoun__6B24EA82" Association="Self.FK__Adoption__Accoun__6B24EA82">
             <End Role="Member" EntitySet="Member" />
             <End Role="Adoption" EntitySet="Adoption" />
           </AssociationSet>
-          <AssociationSet Name="FK__Adoption__CityID__412EB0B6" Association="Self.FK__Adoption__CityID__412EB0B6">
+          <AssociationSet Name="FK__Adoption__CityID__6C190EBB" Association="Self.FK__Adoption__CityID__6C190EBB">
             <End Role="City" EntitySet="City" />
             <End Role="Adoption" EntitySet="Adoption" />
           </AssociationSet>
-          <AssociationSet Name="FK__Adoption__Countr__4222D4EF" Association="Self.FK__Adoption__Countr__4222D4EF">
+          <AssociationSet Name="FK__Adoption__Countr__6D0D32F4" Association="Self.FK__Adoption__Countr__6D0D32F4">
             <End Role="Country" EntitySet="Country" />
             <End Role="Adoption" EntitySet="Adoption" />
           </AssociationSet>
-          <AssociationSet Name="FK__Country__CityID__3D5E1FD2" Association="Self.FK__Country__CityID__3D5E1FD2">
+          <AssociationSet Name="FK__Country__CityID__6E01572D" Association="Self.FK__Country__CityID__6E01572D">
             <End Role="City" EntitySet="City" />
             <End Role="Country" EntitySet="Country" />
           </AssociationSet>
-          <AssociationSet Name="FK__Missing__Account__44FF419A" Association="Self.FK__Missing__Account__44FF419A">
+          <AssociationSet Name="FK__Missing__Account__6EF57B66" Association="Self.FK__Missing__Account__6EF57B66">
             <End Role="Member" EntitySet="Member" />
             <End Role="Missing" EntitySet="Missing" />
           </AssociationSet>
-          <AssociationSet Name="FK__Missing__CityID__45F365D3" Association="Self.FK__Missing__CityID__45F365D3">
+          <AssociationSet Name="FK__Missing__CityID__6FE99F9F" Association="Self.FK__Missing__CityID__6FE99F9F">
             <End Role="City" EntitySet="City" />
             <End Role="Missing" EntitySet="Missing" />
           </AssociationSet>
-          <AssociationSet Name="FK__Missing__Country__46E78A0C" Association="Self.FK__Missing__Country__46E78A0C">
+          <AssociationSet Name="FK__Missing__Country__70DDC3D8" Association="Self.FK__Missing__Country__70DDC3D8">
             <End Role="Country" EntitySet="Country" />
             <End Role="Missing" EntitySet="Missing" />
           </AssociationSet>
-          <AssociationSet Name="FK__Rescue__Account__49C3F6B7" Association="Self.FK__Rescue__Account__49C3F6B7">
+          <AssociationSet Name="FK__Rescue__Account__71D1E811" Association="Self.FK__Rescue__Account__71D1E811">
             <End Role="Member" EntitySet="Member" />
             <End Role="Rescue" EntitySet="Rescue" />
           </AssociationSet>
-          <AssociationSet Name="FK__Rescue__CityID__4AB81AF0" Association="Self.FK__Rescue__CityID__4AB81AF0">
+          <AssociationSet Name="FK__Rescue__CityID__72C60C4A" Association="Self.FK__Rescue__CityID__72C60C4A">
             <End Role="City" EntitySet="City" />
             <End Role="Rescue" EntitySet="Rescue" />
           </AssociationSet>
-          <AssociationSet Name="FK__Rescue__CountryI__4BAC3F29" Association="Self.FK__Rescue__CountryI__4BAC3F29">
+          <AssociationSet Name="FK__Rescue__CountryI__73BA3083" Association="Self.FK__Rescue__CountryI__73BA3083">
             <End Role="Country" EntitySet="Country" />
             <End Role="Rescue" EntitySet="Rescue" />
           </AssociationSet>
@@ -274,7 +277,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="浪愛有家Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="浪愛有家Azure_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Adoption">
           <Key>
             <PropertyRef Name="AdoptionID" />
@@ -295,9 +298,9 @@
           <Property Name="Caption" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="PhotoFile" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="ImageType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Member" Relationship="Self.FK__Adoption__Accoun__403A8C7D" FromRole="Adoption" ToRole="Member" />
-          <NavigationProperty Name="City" Relationship="Self.FK__Adoption__CityID__412EB0B6" FromRole="Adoption" ToRole="City" />
-          <NavigationProperty Name="Country" Relationship="Self.FK__Adoption__Countr__4222D4EF" FromRole="Adoption" ToRole="Country" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__Adoption__Accoun__6B24EA82" FromRole="Adoption" ToRole="Member" />
+          <NavigationProperty Name="City" Relationship="Self.FK__Adoption__CityID__6C190EBB" FromRole="Adoption" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__Adoption__Countr__6D0D32F4" FromRole="Adoption" ToRole="Country" />
         </EntityType>
         <EntityType Name="City">
           <Key>
@@ -305,10 +308,10 @@
           </Key>
           <Property Name="CityID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CityName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Adoption" Relationship="Self.FK__Adoption__CityID__412EB0B6" FromRole="City" ToRole="Adoption" />
-          <NavigationProperty Name="Country" Relationship="Self.FK__Country__CityID__3D5E1FD2" FromRole="City" ToRole="Country" />
-          <NavigationProperty Name="Missing" Relationship="Self.FK__Missing__CityID__45F365D3" FromRole="City" ToRole="Missing" />
-          <NavigationProperty Name="Rescue" Relationship="Self.FK__Rescue__CityID__4AB81AF0" FromRole="City" ToRole="Rescue" />
+          <NavigationProperty Name="Adoption" Relationship="Self.FK__Adoption__CityID__6C190EBB" FromRole="City" ToRole="Adoption" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__Country__CityID__6E01572D" FromRole="City" ToRole="Country" />
+          <NavigationProperty Name="Missing" Relationship="Self.FK__Missing__CityID__6FE99F9F" FromRole="City" ToRole="Missing" />
+          <NavigationProperty Name="Rescue" Relationship="Self.FK__Rescue__CityID__72C60C4A" FromRole="City" ToRole="Rescue" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -317,10 +320,10 @@
           <Property Name="CountryID" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="CountryName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CityID" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Adoption" Relationship="Self.FK__Adoption__Countr__4222D4EF" FromRole="Country" ToRole="Adoption" />
-          <NavigationProperty Name="City" Relationship="Self.FK__Country__CityID__3D5E1FD2" FromRole="Country" ToRole="City" />
-          <NavigationProperty Name="Missing" Relationship="Self.FK__Missing__Country__46E78A0C" FromRole="Country" ToRole="Missing" />
-          <NavigationProperty Name="Rescue" Relationship="Self.FK__Rescue__CountryI__4BAC3F29" FromRole="Country" ToRole="Rescue" />
+          <NavigationProperty Name="Adoption" Relationship="Self.FK__Adoption__Countr__6D0D32F4" FromRole="Country" ToRole="Adoption" />
+          <NavigationProperty Name="City" Relationship="Self.FK__Country__CityID__6E01572D" FromRole="Country" ToRole="City" />
+          <NavigationProperty Name="Missing" Relationship="Self.FK__Missing__Country__70DDC3D8" FromRole="Country" ToRole="Missing" />
+          <NavigationProperty Name="Rescue" Relationship="Self.FK__Rescue__CountryI__73BA3083" FromRole="Country" ToRole="Rescue" />
         </EntityType>
         <EntityType Name="Manager">
           <Key>
@@ -339,9 +342,9 @@
           <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="PhotoFile" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="ImageType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Adoption" Relationship="Self.FK__Adoption__Accoun__403A8C7D" FromRole="Member" ToRole="Adoption" />
-          <NavigationProperty Name="Missing" Relationship="Self.FK__Missing__Account__44FF419A" FromRole="Member" ToRole="Missing" />
-          <NavigationProperty Name="Rescue" Relationship="Self.FK__Rescue__Account__49C3F6B7" FromRole="Member" ToRole="Rescue" />
+          <NavigationProperty Name="Adoption" Relationship="Self.FK__Adoption__Accoun__6B24EA82" FromRole="Member" ToRole="Adoption" />
+          <NavigationProperty Name="Missing" Relationship="Self.FK__Missing__Account__6EF57B66" FromRole="Member" ToRole="Missing" />
+          <NavigationProperty Name="Rescue" Relationship="Self.FK__Rescue__Account__71D1E811" FromRole="Member" ToRole="Rescue" />
         </EntityType>
         <EntityType Name="Missing">
           <Key>
@@ -365,9 +368,9 @@
           <Property Name="Caption" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="PhotoFile" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="ImageType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="City" Relationship="Self.FK__Missing__CityID__45F365D3" FromRole="Missing" ToRole="City" />
-          <NavigationProperty Name="Country" Relationship="Self.FK__Missing__Country__46E78A0C" FromRole="Missing" ToRole="Country" />
-          <NavigationProperty Name="Member" Relationship="Self.FK__Missing__Account__44FF419A" FromRole="Missing" ToRole="Member" />
+          <NavigationProperty Name="City" Relationship="Self.FK__Missing__CityID__6FE99F9F" FromRole="Missing" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__Missing__Country__70DDC3D8" FromRole="Missing" ToRole="Country" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__Missing__Account__6EF57B66" FromRole="Missing" ToRole="Member" />
         </EntityType>
         <EntityType Name="Rescue">
           <Key>
@@ -387,11 +390,11 @@
           <Property Name="Caption" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="PhotoFile" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="ImageType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="City" Relationship="Self.FK__Rescue__CityID__4AB81AF0" FromRole="Rescue" ToRole="City" />
-          <NavigationProperty Name="Country" Relationship="Self.FK__Rescue__CountryI__4BAC3F29" FromRole="Rescue" ToRole="Country" />
-          <NavigationProperty Name="Member" Relationship="Self.FK__Rescue__Account__49C3F6B7" FromRole="Rescue" ToRole="Member" />
+          <NavigationProperty Name="City" Relationship="Self.FK__Rescue__CityID__72C60C4A" FromRole="Rescue" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__Rescue__CountryI__73BA3083" FromRole="Rescue" ToRole="Country" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__Rescue__Account__71D1E811" FromRole="Rescue" ToRole="Member" />
         </EntityType>
-        <Association Name="FK__Adoption__Accoun__403A8C7D">
+        <Association Name="FK__Adoption__Accoun__6B24EA82">
           <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
           <End Role="Adoption" Type="Self.Adoption" Multiplicity="*" />
           <ReferentialConstraint>
@@ -403,7 +406,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Adoption__CityID__412EB0B6">
+        <Association Name="FK__Adoption__CityID__6C190EBB">
           <End Role="City" Type="Self.City" Multiplicity="1" />
           <End Role="Adoption" Type="Self.Adoption" Multiplicity="*" />
           <ReferentialConstraint>
@@ -415,7 +418,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Adoption__Countr__4222D4EF">
+        <Association Name="FK__Adoption__Countr__6D0D32F4">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="Adoption" Type="Self.Adoption" Multiplicity="*" />
           <ReferentialConstraint>
@@ -427,7 +430,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Country__CityID__3D5E1FD2">
+        <Association Name="FK__Country__CityID__6E01572D">
           <End Role="City" Type="Self.City" Multiplicity="1" />
           <End Role="Country" Type="Self.Country" Multiplicity="*" />
           <ReferentialConstraint>
@@ -439,7 +442,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Missing__CityID__45F365D3">
+        <Association Name="FK__Missing__CityID__6FE99F9F">
           <End Role="City" Type="Self.City" Multiplicity="1" />
           <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
           <ReferentialConstraint>
@@ -451,7 +454,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Rescue__CityID__4AB81AF0">
+        <Association Name="FK__Rescue__CityID__72C60C4A">
           <End Role="City" Type="Self.City" Multiplicity="1" />
           <End Role="Rescue" Type="Self.Rescue" Multiplicity="*" />
           <ReferentialConstraint>
@@ -463,7 +466,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Missing__Country__46E78A0C">
+        <Association Name="FK__Missing__Country__70DDC3D8">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
           <ReferentialConstraint>
@@ -475,7 +478,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Rescue__CountryI__4BAC3F29">
+        <Association Name="FK__Rescue__CountryI__73BA3083">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="Rescue" Type="Self.Rescue" Multiplicity="*" />
           <ReferentialConstraint>
@@ -487,7 +490,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Missing__Account__44FF419A">
+        <Association Name="FK__Missing__Account__6EF57B66">
           <End Role="Member" Type="Self.Member" Multiplicity="1" />
           <End Role="Missing" Type="Self.Missing" Multiplicity="*" />
           <ReferentialConstraint>
@@ -499,7 +502,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Rescue__Account__49C3F6B7">
+        <Association Name="FK__Rescue__Account__71D1E811">
           <End Role="Member" Type="Self.Member" Multiplicity="1" />
           <End Role="Rescue" Type="Self.Rescue" Multiplicity="*" />
           <ReferentialConstraint>
@@ -511,7 +514,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="浪愛有家Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="浪愛有家Azure_Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adoption" EntityType="Self.Adoption" />
           <EntitySet Name="City" EntityType="Self.City" />
           <EntitySet Name="Country" EntityType="Self.Country" />
@@ -519,43 +522,43 @@
           <EntitySet Name="Member" EntityType="Self.Member" />
           <EntitySet Name="Missing" EntityType="Self.Missing" />
           <EntitySet Name="Rescue" EntityType="Self.Rescue" />
-          <AssociationSet Name="FK__Adoption__Accoun__403A8C7D" Association="Self.FK__Adoption__Accoun__403A8C7D">
+          <AssociationSet Name="FK__Adoption__Accoun__6B24EA82" Association="Self.FK__Adoption__Accoun__6B24EA82">
             <End Role="Member" EntitySet="Member" />
             <End Role="Adoption" EntitySet="Adoption" />
           </AssociationSet>
-          <AssociationSet Name="FK__Adoption__CityID__412EB0B6" Association="Self.FK__Adoption__CityID__412EB0B6">
+          <AssociationSet Name="FK__Adoption__CityID__6C190EBB" Association="Self.FK__Adoption__CityID__6C190EBB">
             <End Role="City" EntitySet="City" />
             <End Role="Adoption" EntitySet="Adoption" />
           </AssociationSet>
-          <AssociationSet Name="FK__Adoption__Countr__4222D4EF" Association="Self.FK__Adoption__Countr__4222D4EF">
+          <AssociationSet Name="FK__Adoption__Countr__6D0D32F4" Association="Self.FK__Adoption__Countr__6D0D32F4">
             <End Role="Country" EntitySet="Country" />
             <End Role="Adoption" EntitySet="Adoption" />
           </AssociationSet>
-          <AssociationSet Name="FK__Country__CityID__3D5E1FD2" Association="Self.FK__Country__CityID__3D5E1FD2">
+          <AssociationSet Name="FK__Country__CityID__6E01572D" Association="Self.FK__Country__CityID__6E01572D">
             <End Role="City" EntitySet="City" />
             <End Role="Country" EntitySet="Country" />
           </AssociationSet>
-          <AssociationSet Name="FK__Missing__CityID__45F365D3" Association="Self.FK__Missing__CityID__45F365D3">
+          <AssociationSet Name="FK__Missing__CityID__6FE99F9F" Association="Self.FK__Missing__CityID__6FE99F9F">
             <End Role="City" EntitySet="City" />
             <End Role="Missing" EntitySet="Missing" />
           </AssociationSet>
-          <AssociationSet Name="FK__Rescue__CityID__4AB81AF0" Association="Self.FK__Rescue__CityID__4AB81AF0">
+          <AssociationSet Name="FK__Rescue__CityID__72C60C4A" Association="Self.FK__Rescue__CityID__72C60C4A">
             <End Role="City" EntitySet="City" />
             <End Role="Rescue" EntitySet="Rescue" />
           </AssociationSet>
-          <AssociationSet Name="FK__Missing__Country__46E78A0C" Association="Self.FK__Missing__Country__46E78A0C">
+          <AssociationSet Name="FK__Missing__Country__70DDC3D8" Association="Self.FK__Missing__Country__70DDC3D8">
             <End Role="Country" EntitySet="Country" />
             <End Role="Missing" EntitySet="Missing" />
           </AssociationSet>
-          <AssociationSet Name="FK__Rescue__CountryI__4BAC3F29" Association="Self.FK__Rescue__CountryI__4BAC3F29">
+          <AssociationSet Name="FK__Rescue__CountryI__73BA3083" Association="Self.FK__Rescue__CountryI__73BA3083">
             <End Role="Country" EntitySet="Country" />
             <End Role="Rescue" EntitySet="Rescue" />
           </AssociationSet>
-          <AssociationSet Name="FK__Missing__Account__44FF419A" Association="Self.FK__Missing__Account__44FF419A">
+          <AssociationSet Name="FK__Missing__Account__6EF57B66" Association="Self.FK__Missing__Account__6EF57B66">
             <End Role="Member" EntitySet="Member" />
             <End Role="Missing" EntitySet="Missing" />
           </AssociationSet>
-          <AssociationSet Name="FK__Rescue__Account__49C3F6B7" Association="Self.FK__Rescue__Account__49C3F6B7">
+          <AssociationSet Name="FK__Rescue__Account__71D1E811" Association="Self.FK__Rescue__Account__71D1E811">
             <End Role="Member" EntitySet="Member" />
             <End Role="Rescue" EntitySet="Rescue" />
           </AssociationSet>
@@ -565,9 +568,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="浪愛有家ModelStoreContainer" CdmEntityContainer="浪愛有家Entities">
+        <EntityContainerMapping StorageEntityContainer="浪愛有家Azure_ModelStoreContainer" CdmEntityContainer="浪愛有家Azure_Entities">
           <EntitySetMapping Name="Adoption">
-            <EntityTypeMapping TypeName="浪愛有家Model.Adoption">
+            <EntityTypeMapping TypeName="浪愛有家Azure_Model.Adoption">
               <MappingFragment StoreEntitySet="Adoption">
                 <ScalarProperty Name="AdoptionID" ColumnName="AdoptionID" />
                 <ScalarProperty Name="Account" ColumnName="Account" />
@@ -589,7 +592,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="City">
-            <EntityTypeMapping TypeName="浪愛有家Model.City">
+            <EntityTypeMapping TypeName="浪愛有家Azure_Model.City">
               <MappingFragment StoreEntitySet="City">
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
@@ -597,7 +600,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Country">
-            <EntityTypeMapping TypeName="浪愛有家Model.Country">
+            <EntityTypeMapping TypeName="浪愛有家Azure_Model.Country">
               <MappingFragment StoreEntitySet="Country">
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
                 <ScalarProperty Name="CountryName" ColumnName="CountryName" />
@@ -606,7 +609,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Manager">
-            <EntityTypeMapping TypeName="浪愛有家Model.Manager">
+            <EntityTypeMapping TypeName="浪愛有家Azure_Model.Manager">
               <MappingFragment StoreEntitySet="Manager">
                 <ScalarProperty Name="Account" ColumnName="Account" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
@@ -614,7 +617,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Member">
-            <EntityTypeMapping TypeName="浪愛有家Model.Member">
+            <EntityTypeMapping TypeName="浪愛有家Azure_Model.Member">
               <MappingFragment StoreEntitySet="Member">
                 <ScalarProperty Name="Account" ColumnName="Account" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
@@ -626,7 +629,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Missing">
-            <EntityTypeMapping TypeName="浪愛有家Model.Missing">
+            <EntityTypeMapping TypeName="浪愛有家Azure_Model.Missing">
               <MappingFragment StoreEntitySet="Missing">
                 <ScalarProperty Name="MissingID" ColumnName="MissingID" />
                 <ScalarProperty Name="Account" ColumnName="Account" />
@@ -650,7 +653,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rescue">
-            <EntityTypeMapping TypeName="浪愛有家Model.Rescue">
+            <EntityTypeMapping TypeName="浪愛有家Azure_Model.Rescue">
               <MappingFragment StoreEntitySet="Rescue">
                 <ScalarProperty Name="RescueID" ColumnName="RescueID" />
                 <ScalarProperty Name="Account" ColumnName="Account" />
