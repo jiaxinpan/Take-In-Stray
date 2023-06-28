@@ -28,7 +28,7 @@ namespace 浪愛有家.Controllers
             //取得目前已登入的會員帳號
             string user = ((Member)Session["user"]).Account;
             //從資料庫中取得以登入會員發布的文章
-            var adoption = db.Adoption.Where(a => a.Account == user);
+            var adoption = db.Adoption.Where(a => a.Account == user).OrderByDescending(a => a.PublicationDate);
 
             return View(adoption.ToList());
         }
@@ -180,6 +180,8 @@ namespace 浪愛有家.Controllers
                 adoption = adoption.Where(a => a.AnimalKind == animalKind);
             }
 
+            adoption= adoption.OrderByDescending(a => a.PublicationDate);
+
             ViewBag.CityList = new SelectList(db.City, "CityName", "CityName");
             ViewBag.AnimalKindList = new SelectList(db.Adoption.Select(a => a.AnimalKind).Distinct().OrderBy(a => a));
 
@@ -209,7 +211,7 @@ namespace 浪愛有家.Controllers
         [Admin_LoginCheck]
         public ActionResult Admin_Adoption_Index()
         {
-            var adoption = db.Adoption.Include(a => a.Member).Include(a => a.City).Include(a => a.Country);
+            var adoption = db.Adoption.Include(a => a.Member).Include(a => a.City).Include(a => a.Country).OrderByDescending(a => a.PublicationDate);
             return View(adoption.ToList());
         }
 

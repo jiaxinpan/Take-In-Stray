@@ -213,6 +213,10 @@
     <Compile Include="ViewModel\VMLogin.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\浪愛有家.mdf" />
+    <Content Include="App_Data\浪愛有家_log.ldf">
+      <DependentUpon>浪愛有家.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -430,9 +434,7 @@
     <Content Include="Views\Member\User_Member_Index.cshtml" />
     <Content Include="Views\Member\User_Member_Edit.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />

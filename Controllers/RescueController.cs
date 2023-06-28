@@ -24,7 +24,7 @@ namespace 浪愛有家.Controllers
         public ActionResult User_Rescue_Index()
         {           
             string user = ((Member)Session["user"]).Account;
-            var rescue = db.Rescue.Where(a => a.Account == user);
+            var rescue = db.Rescue.Where(a => a.Account == user).OrderByDescending(r => r.PublicationDate);
 
             return View(rescue.ToList());
         }
@@ -161,6 +161,8 @@ namespace 浪愛有家.Controllers
                 rescue = rescue.Where(r => r.AnimalKind == animalKind);
             }
 
+            rescue = rescue.OrderByDescending(r => r.PublicationDate);
+
             ViewBag.CityList = new SelectList(db.City, "CityName", "CityName");
             ViewBag.AnimalKindList = new SelectList(db.Rescue.Select(r => r.AnimalKind).Distinct().OrderBy(r => r));
 
@@ -190,7 +192,7 @@ namespace 浪愛有家.Controllers
         [Admin_LoginCheck]
         public ActionResult Admin_Rescue_Index()
         {
-            var rescue = db.Rescue.Include(r => r.City).Include(r => r.Country).Include(r => r.Member);
+            var rescue = db.Rescue.Include(r => r.City).Include(r => r.Country).Include(r => r.Member).OrderByDescending(r => r.PublicationDate);
             return View(rescue.ToList());
         }
 
